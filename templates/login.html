@@ -1,0 +1,21 @@
+{% extends "main.html" %}
+{% block title %}Login Page{% endblock%}
+{%block content%}
+{% with messages=get_flashed_messages() %}
+{%if messages%}
+<p>{{messages[0]}}</p>
+{% endif %}
+{% endwith  %}
+  <form action="# " method="POST">
+    <p>Name</p>
+    <p><input type="text" name="n1"></p>
+    <p>Password</p>
+    <p><input type="text" name="n2"></p>
+    <p><input type="submit" name="submit"></p>
+        </form>
+    {% if er==True %}
+    <h2>Please enter valid Username/Password</h2>
+    {% endif%}
+    <h1>{{a}}</h1>
+    <h1>{{f}}</h1>
+    {%endblock%}

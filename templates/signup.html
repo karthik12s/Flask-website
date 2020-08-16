@@ -1,0 +1,21 @@
+{% extends "main.html" %}
+{% block title %}signup Page{% endblock%}
+{%block content%}
+{% with messages=get_flashed_messages() %}
+{%if messages%}
+<p>{{messages[0]}}</p>
+{% endif %}
+{% endwith  %}
+<form action="#" method="POST">
+  <p>Name</p>
+  <p><input type="text" name="n3"></p>
+  <p>Password</p>
+  <p><input type="text" name="n4"></p>
+  <p>Confirm Password</p>
+  <p><input type="text" name="n5"></p>
+  <!-- <p><input type="file" multiple="flase" accept="image/*" name="n6" ></p> -->
+  <p><input type="submit" name="Signup"></p>
+  {%if con==True%}
+  <p>Please enter same Password</p>
+  {%endif%}
+  {%endblock%}

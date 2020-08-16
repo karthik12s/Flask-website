@@ -1,0 +1,14 @@
+{% extends "main.html" %}
+{% block title %}Home Page{% endblock%}
+{%block content%}
+{% with messages=get_flashed_messages() %}
+{%if messages%}
+<p>{{messages[0]}}</p>
+{% endif %}
+{% endwith  %}
+{% if n %}
+<h1>Welcome {{n}}!!</h1>
+{% else%}
+<h1>Welcome user!!</h1>
+{% endif %}
+{%endblock%}
