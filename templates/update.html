@@ -1,0 +1,23 @@
+{% extends "main.html" %}
+{% block title %}Update Page{% endblock%}
+{%block content%}
+  <h1>Name</h1>
+  <h2>{{co1.name}}</h2>
+  <h1>Password</h1>
+  <h2>{{co1.password}}</h2>
+  <h1>{{u}}</h1>
+  <form action="#" method="POST">
+    <p>Date of Birth</p>
+    <p><input type="date" name="do" value="{{ co1.dob if co1.dob}}"></p>
+    <p>Email</p>
+    <p><input type="email" name="em" value="{{ co1.email if co1.email }}"></p>
+    <p>Country</p>
+    <p><input list="count" name="co" value="{{ co1.country if co1.country }}"></p>
+    <datalist id="count">
+      {% for i in l1%}
+      <option value="{{i}}"></option>
+      {%endfor%}
+    </datalist>
+    <!-- <p><input type="file" multiple="flase" accept="image/*" name="n6" ></p> -->
+    <p><input type="submit" name="Update"></p>
+{%endblock%}

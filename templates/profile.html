@@ -1,9 +1,34 @@
 {% extends "main.html" %}
 {% block title %}Profie Page{% endblock%}
 {%block content%}
+{% with messages=get_flashed_messages() %}
+{%if messages%}
+<p>{{messages[0]}}</p>
+{% endif %}
+{% endwith  %}
+
+<button type="button" class="btn-btn-primary"><a href="/update" class="btn-btn-primary" role="button">Update Profile</a></button>
   <h1>Name</h1>
-  <h2>{{co1[0]}}</h2>
+  <h2>{{co1.name}}</h2>
   <h1>Password</h1>
-  <h2>{{co1[1]}}</h2>
+  <h2>{{co1.password}}</h2>
   <h1>{{u}}</h1>
+  <h1>Date of Birth</h1>
+  {% if co1.dob!=None%}
+  <h2>{{ co1.dob }}</h2>
+  {% else%}
+  <h2>-</h2>
+  {% endif %}
+  <h1>Email</h1>
+  {% if co1.email!=None%}
+  <h2>{{ co1.email }}</h2>
+  {% else%}
+  <h2>-</h2>
+  {% endif %}
+  <h1>Country</h1>
+  {% if co1.country!=None%}
+  <h2>{{ co1.country }}</h2>
+  {% else%}
+  <h2>-</h2>
+  {% endif %}
 {%endblock%}

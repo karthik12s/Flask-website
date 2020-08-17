@@ -1,0 +1,107 @@
+{% extends "main.html" %}
+{% block title %}Plot Page{% endblock%}
+{%block content%}
+<h2>World population & Protiens bar Plots</h2>
+{% with messages=get_flashed_messages() %}
+{%if messages%}
+<p>{{messages[0]}}</p>
+{% endif %}
+{% endwith  %}
+<form action="# " method="POST">
+<p>Country 1</p>
+<input list="count" value="{{a if a}}" name="c1">
+<p>Country 2</p>
+<input list="count" value="{{ b if b}}" name="c2">
+<input type="submit" name="submit">
+<datalist id="count">
+  {% for i in l1%}
+  <option value="{{i}}"></option>
+  {%endfor%}
+</datalist>
+</form>
+<div class="row">
+    <div class="col-md-6">
+      <canvas id="chart_po" width="600" height="400"></canvas>
+      <h4 align='center'>Population</h4>
+    </div>
+    <div class="col-md-6">
+      <canvas id="chart_pr" width="600" height="400"></canvas>
+      <h4 align='center'>Protiens</h4>
+    </div>
+</div>
+
+    <script>
+      // bar chart data
+      var barData_po = {
+        labels : [
+          {% for item in labels %}
+           "{{ item }}",
+          {% endfor %}
+	],
+
+        datasets : [{
+          fillColor: "rgba(151,187,205,0.2)",
+          strokeColor: "rgba(151,187,205,1)",
+          pointColor: "rgba(151,187,205,1)",
+          data : [
+            {% for item in values %}
+               "{{ item }}",
+              {% endfor %}
+	    ]
+          }
+        ]
+      }
+      var barData_pr = {
+        labels : [
+          {% for item in labels %}
+           "{{ item }}",
+          {% endfor %}
+	],
+
+        datasets : [{
+          fillColor: "rgba(151,187,205,0.2)",
+          strokeColor: "rgba(151,187,205,1)",
+          pointColor: "rgba(151,187,205,1)",
+          data : [
+            {% for item in values_p %}
+               "{{ item }}",
+              {% endfor %}
+	    ]
+          }
+        ]
+      }
+
+     // get bar chart canvas
+     var mychart_po = document.getElementById("chart_po").getContext("2d");
+     var mychart_pr = document.getElementById("chart_pr").getContext("2d");
+
+       steps = 10
+       max_po = {{max_po}}
+       max_pr = {{max_pr}}
+
+     // draw bar chart
+     new Chart(mychart_po).Bar(barData_po, {
+       scaleOverride: true,
+       scaleSteps: steps,
+       scaleStepWidth: Math.ceil(max_po / steps),
+       scaleStartValue: 0,
+       scaleShowVerticalLines: true,
+       scaleShowGridLines : true,
+       barShowStroke : true,
+       scaleShowLabels: true
+       }
+     );
+     new Chart(mychart_pr).Bar(barData_pr, {
+       scaleOverride: true,
+       scaleSteps: steps,
+       scaleStepWidth: Math.ceil(max_pr / steps),
+       scaleStartValue: 0,
+       scaleShowVerticalLines: true,
+       scaleShowGridLines : true,
+       barShowStroke : true,
+       scaleShowLabels: true
+       }
+     );
+
+    </script>
+{%endblock%}
