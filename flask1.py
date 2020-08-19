@@ -36,7 +36,7 @@ def bar_plot():    #Function to create the base plot, make sure to make global t
 		if len(lab)<2 or len(val)<2:
 			flash('Please select a country')
 			return(render_template('bar_plot.html',l1=li))
-		return render_template('bar_plot.html',labels=lab,values=val,max_po=max(val)+1000,max_pr=max(val_p)+0.2,values_p=val_p,a=a1,b=b1,l1=li)
+		return render_template('bar_plot.html',labels=lab,values=val,max_po=max(val)+1000,max_pr=max(val_p)+0.2,values_p=val_p,a=a1,b=b1,l1=li,h1='Population',h2='Protiens',ch='Population Worldwide')
 	else:
 		return render_template('bar_plot.html',l1=li)
 

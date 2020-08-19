@@ -9,7 +9,32 @@
     canvas{
       padding: 20px;
     }
-    
+    button{
+      margin-top: 20px;
+    }
+    table {
+            padding: 20px;
+            border-style: ridge;
+            border-color: black;
+            border-width: 2px;
+            text-align: center;
+            align-self: center;
+            margin-top: 20px;
+
+            }
+            td,th {
+                border-right:1px solid black;
+                border-bottom: 1px solid black;
+            }
+            th{
+                background-color: lightskyblue;
+            }
+            .abc{
+                background-color: lightskyblue;
+            }
+
+
+
   </style>
   <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js'></script>
 </head>
@@ -36,13 +61,6 @@
       <li class="nav-item">
         <a class="nav-link" href="/logout">Logout</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/bar_plot">Bar Plot</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/line">Line Plot</a>
-      </li>
-    </ul>
   </div>
 </nav>
   {% block content%}{% endblock%}
